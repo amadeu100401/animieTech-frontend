@@ -2,9 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Animie } from "../../../types/types";
 
 export function AnimieCard({ animie }: { animie: Animie }) {
-
-    console.log("Rendering AnimieCard for:", animie);
-
     return (
         <Card className = "overflow-hidden hover:shadow-md transaction-shadow">
             <img
