@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AnimieCard } from "./AnimieCard";
 import { useAnimies } from "../hooks/useAnimies";
+import { Search } from "lucide-react";
 
 export function AnimieList() {
   const { data, isLoading, isError, error } = useAnimies();
@@ -35,21 +36,37 @@ export function AnimieList() {
   if (isError) return <div>Erro ao carregar animies: {error?.message}</div>;
 
   return (
-    <div className="space-y-6">
+    <div className="container mx-auto px-4 py-12 space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-3xl font-bold text-zinc-100">
+          Catálogo de Animes
+        </h2>
+
+        {filtered.length > 0 && (
+          <p className="text-muted-foreground">
+            {filtered.length} {filtered.length === 1 ? "anime" : "animes"} encontrado{filtered.length === 1 ? "" : "s"}
+          </p>
+        )}
+      </div>
+
       {/* Filtros */}
       <div className="flex flex-col md:flex-row gap-4">
-        <Input
-          placeholder="Buscar animies..."
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-          className="md:w-1/2"
-        />
+        <div className="relative flex-1">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground"/>
+          <Input
+            type="text"
+            placeholder="Buscar animies..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+            className="pl-10"
+          />
+        </div>
 
         <Select value={genre} onValueChange={setGenre}>
-          <SelectTrigger className="w-full md:w-1/2">
-            <SelectValue placeholder="Filtrar por gênero" />
+          <SelectTrigger className="w-full sm:w-[200px] bg-transparent">
+            <SelectValue placeholder="Filtrar por gênero"/>
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="border-slate-900 bg-zinc-900 backdrop-blur shadow-md">
             <SelectItem value="all">Todos</SelectItem>
             {uniqueGenres.map(g => (
               <SelectItem key={g.malId} value={g.name}>

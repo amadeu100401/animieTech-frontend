@@ -49,9 +49,9 @@ export default {
         },
       },
       backgroundImage: {
-        'gradient-primary': 'var(--gradient-primary)',
-        'gradient-accent': 'var(--gradient-accent)',
-        'gradient-hero': 'var(--gradient-hero)',
+        'gradient-primary': 'linear-gradient(135deg, hsl(280 80% 60%), hsl(330 80% 60%))',
+        'gradient-accent': 'linear-gradient(135deg, hsl(330 80% 60%), hsl(190 90% 50%))',
+        'gradient-hero': 'linear-gradient(180deg, hsl(240 10% 3.9%), hsl(240 10% 8%))',
       },
       boxShadow: {
         'glow-primary': 'var(--glow-primary)',

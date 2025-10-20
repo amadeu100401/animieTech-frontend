@@ -3,6 +3,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* *,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+} */
+
+/* Reset global de margem e padding */
+html, body {
+  @apply m-0 p-0;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -44,6 +57,11 @@
 }
 
 :root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+
   --radius: 0.625rem;
   
   /* Core background/foreground */
@@ -138,14 +156,37 @@
 }
 
 body {
+  margin: 0;       
+  padding: 0;
   background-color: var(--background);
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50;
+    border-width: 0;
+    button, [role="button"], .btn {
+    cursor: pointer;
+  }
   }
   body {
     @apply bg-background text-foreground;
   }
+}
+
+[data-slot="input"] {
+  @apply border bg-transparent text-white placeholder-gray-400 transition-colors duration-200;
+}
+
+[data-slot="input"]:focus {
+  @apply border-purple-500 ring-0 outline-none;
+}
+
+[data-slot="select-trigger"] {
+  background-color: transparent !important;
+}
+
+[data-slot="select-trigger"]:focus,
+[data-slot="select-trigger"][data-state="open"] {
+    @apply border-purple-500 ring-0 outline-none;
 }

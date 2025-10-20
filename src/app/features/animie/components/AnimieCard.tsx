@@ -3,7 +3,7 @@ import { Animie } from "../../../types/types";
 
 export function AnimieCard({ animie }: { animie: Animie }) {
     return (
-        <Card className = "overflow-hidden hover:shadow-md transaction-shadow">
+        <Card className = "border-none overflow-hidden hover:shadow-md transaction-shadow">
             <img
                 src={animie.imageUrl || "/placeholder-image.png"}
                 alt={animie.title || "Anime Image"}
