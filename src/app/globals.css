@@ -128,7 +128,6 @@ html, body {
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
   --primary-foreground: oklch(0.21 0.006 285.885);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
@@ -153,6 +152,34 @@ html, body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+
+ --primary-main: oklch(0.568 0.226 309.8);
+
+ --secondary: oklch(0.578 0.221 359.7);
+ --secondary-foreground: oklch(0.981 0 0);
+
+  /* Sidebar */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.21 0.006 285.885);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, hsl(280 80% 60%), hsl(330 80% 60%));
+  --gradient-accent: linear-gradient(135deg, hsl(330 80% 60%), hsl(190 90% 50%));
+  --gradient-hero: linear-gradient(180deg, var(--background), hsl(240 10% 8%));
+
+  /* Shadows & Glows */
+  --glow-primary: 0 0 20px hsl(280 80% 60% / 0.5);
+  --glow-secondary: 0 0 20px hsl(330 80% 60% / 0.5);
+  --glow-accent: 0 0 20px hsl(190 90% 50% / 0.5);
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
@@ -174,6 +201,33 @@ body {
   }
 }
 
+@layer utilities {
+  .fill-secondary-color {
+    fill: var(--secondary);
+  }
+
+  .text-primary {
+    color: var(--primary-main);
+  }
+
+  .group:hover .group-hover-text-primary {
+    color: var(--primary-main);
+    transition: color 0.3s;
+  }
+
+  .glow-primary {
+    @apply transition-all duration-300;
+    box-shadow: var(--glow-primary);
+  }
+  .hover\:glow-primary:hover {
+    box-shadow: var(--glow-primary);
+  }
+
+  .border-primary {
+    border-color: var(--primary-main);
+  }
+}
+
 [data-slot="input"] {
   @apply border bg-transparent text-white placeholder-gray-400 transition-colors duration-200;
 }
@@ -190,3 +244,5 @@ body {
 [data-slot="select-trigger"][data-state="open"] {
     @apply border-purple-500 ring-0 outline-none;
 }
+
+

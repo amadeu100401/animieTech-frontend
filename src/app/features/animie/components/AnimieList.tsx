@@ -77,7 +77,7 @@ export function AnimieList() {
         </Select>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map(animie => (
             <AnimieCard key={animie.id ?? animie.title ?? Math.random()} animie={animie} />
         ))}
