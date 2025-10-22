@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllAnimies } from "../api/getAllAnimies";
+import { getAnimieListPagined } from "../api/getAnimies";
 
-export function useAnimies() {
+export function useAnimies(page?: number, limit?: number) {
     return useQuery({
-        queryKey: ["responseData"],
-        queryFn: getAllAnimies,
+        queryKey: ["responseData", page, limit],
+        queryFn: () => getAnimieListPagined(page, limit),
         staleTime: 1000 * 60 * 5,
     });
 }
